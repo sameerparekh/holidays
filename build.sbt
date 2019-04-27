@@ -1,4 +1,4 @@
-name := "holiday-calendar"
+name := "holidays"
 
 version := "0.1.0"
 
