@@ -23,6 +23,7 @@ class UsaSuite extends FunSuite with MustMatchers {
       "2018-07-04",
       "2018-09-03",
       "2018-10-08",
+      "2018-11-12",
       "2018-11-22",
       "2018-12-25",
     )
