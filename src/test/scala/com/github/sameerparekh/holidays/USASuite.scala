@@ -4,7 +4,9 @@ import com.github.nscala_time.time.Imports.{LocalDate, _}
 import org.joda.time.DateTimeConstants.JANUARY
 import org.scalatest.{FunSuite, MustMatchers}
 
-class UsaSuite extends FunSuite with MustMatchers {
+class USASuite extends FunSuite with MustMatchers {
+  implicit val holidayCalendar = USAFederalHolidays
+
   def daysInYear(year: Int): Seq[LocalDate] = {
     def listDays(startDay: LocalDate): Stream[LocalDate] = {
       startDay #:: listDays(startDay + 1.day)
@@ -13,7 +15,7 @@ class UsaSuite extends FunSuite with MustMatchers {
   }
 
   test("2018 USA holidays should be correct") {
-    val holidays = daysInYear(2018).filter(_.isHoliday(USAFederalHolidays)).map(_.toString)
+    val holidays = daysInYear(2018).filter(_.isHoliday).map(_.toString)
 
     holidays must contain theSameElementsAs Seq(
       "2018-01-01",
@@ -30,7 +32,7 @@ class UsaSuite extends FunSuite with MustMatchers {
   }
 
   test("2019 USA Holidays should be correct") {
-    val holidays = daysInYear(2019).filter(_.isHoliday(USAFederalHolidays)).map(_.toString)
+    val holidays = daysInYear(2019).filter(_.isHoliday).map(_.toString)
 
     holidays must contain theSameElementsAs Seq(
       "2019-01-01",

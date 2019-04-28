@@ -10,7 +10,7 @@ package object holidays {
   type HolidaysForYear = Int => Set[LocalDate]
 
   implicit class RichLocalDate(date: LocalDate) {
-    def isHoliday(holidaysForYear: HolidaysForYear): Boolean = {
+    def isHoliday(implicit holidaysForYear: HolidaysForYear): Boolean = {
       holidaysForYear(date.getYear).contains(date)
     }
   }
