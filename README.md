@@ -15,14 +15,14 @@ libraryDependencies += "com.github.sameerparekh" %% "holidays" % "0.1.0"
 ## Usage
 
 * Import the library.
-* Configure an implicit holiday list (`HolidaysForYear`)
+* Configure an implicit holiday list (`HolidayList`)
 * Check your `LocalDate` to see if it is a holiday.
 
 ```scala
 import com.github.sameerparekh.holidays._
 import org.joda.time.LocalDate
 
-implicit val holidayList: HolidaysForYear = USAFederalHolidays
+implicit val holidayList: HolidayList = USAFederalHolidays
 
 println {
   if (LocalDate.now().isHoliday) "Today is a holiday" 
