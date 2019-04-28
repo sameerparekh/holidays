@@ -7,11 +7,11 @@ import scala.util.{Failure, Success, Try}
 
 package object holidays {
   type HolidayFromYear = Int => LocalDate
-  type HolidaysForYear = Int => Set[LocalDate]
+  type HolidaysForYear = Set[HolidayFromYear]
 
   implicit class RichLocalDate(date: LocalDate) {
     def isHoliday(implicit holidaysForYear: HolidaysForYear): Boolean = {
-      holidaysForYear(date.getYear).contains(date)
+      holidaysForYear.map(_(date.getYear)).contains(date)
     }
   }
 
@@ -95,7 +95,7 @@ package object holidays {
     moveToWeekday(new LocalDate(year, DECEMBER, 31))
   }
 
-  val USAFederalHolidays: HolidaysForYear = year => {
+  val USAFederalHolidays: HolidaysForYear =
     Set(
       NewYears,
       MLKDay,
@@ -107,9 +107,12 @@ package object holidays {
       VeteransDay,
       ThanksgivingDay,
       ChristmasDay,
-    ).map(_(year))
-  }
+    )
 
+  /**
+    * Given a range of dates within a specific month, return the date which is on a given
+    * weekday.
+    */
   private def getDayInRange(
     range: Seq[Int],
     weekDay: Int,
@@ -129,10 +132,17 @@ package object holidays {
     }
   }
 
+  /**
+    * Given 'n', returns the range of dates which will contain the nth weekday of
+    * the month.
+    */
   private def nthWeekdayOfMonthRange(n: Int): Seq[Int] = {
     ((n - 1) * 7) + 1 to n * 7
   }
 
+  /**
+    * Given a specific month, return the last 7 dates in that month.r
+    */
   private def lastWeekdayOfMonthRange(month: Int, year: Int): Seq[Int] = {
     val lastDayOfMonth = new LocalDate(year, month, 1)
       .dayOfMonth
@@ -142,6 +152,9 @@ package object holidays {
     (lastDayOfMonth - 6) to lastDayOfMonth
   }
 
+  /**
+    * Given a date, return the closest weekday (Monday-Friday)
+    */
   private def moveToWeekday(dt: LocalDate): LocalDate = {
     // Move Saturdays to Friday and Sundays to Monday
     dt.getDayOfWeek match {

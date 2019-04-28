@@ -5,7 +5,7 @@ import org.joda.time.DateTimeConstants.JANUARY
 import org.scalatest.{FunSuite, MustMatchers}
 
 class USASuite extends FunSuite with MustMatchers {
-  implicit val holidayCalendar = USAFederalHolidays
+  implicit val holidayCalendar: HolidaysForYear = USAFederalHolidays
 
   def daysInYear(year: Int): Seq[LocalDate] = {
     def listDays(startDay: LocalDate): Stream[LocalDate] = {
