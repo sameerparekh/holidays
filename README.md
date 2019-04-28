@@ -32,6 +32,8 @@ println {
 
 ## Extension
 
+Pull requests welcome.
+
 ### Add a holiday
 
 * Create a new instance of a `HolidayFromYear`, which is a function from a year to a `LocalDate`. A
