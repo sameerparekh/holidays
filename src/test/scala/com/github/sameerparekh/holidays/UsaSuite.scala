@@ -29,7 +29,7 @@ class UsaSuite extends FunSuite with MustMatchers {
     )
   }
 
-  test("USA 2019 Holidays should be correct") {
+  test("2019 USA Holidays should be correct") {
     val holidays = daysInYear(2019).filter(_.isHoliday(USAFederalHolidays)).map(_.toString)
 
     holidays must contain theSameElementsAs Seq(
