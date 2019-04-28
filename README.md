@@ -41,4 +41,4 @@ number of helper functions are available.
 
 ### Add a new holiday list
 
-* Create a new instance of a `HolidaysForYear`, which is a set of `HolidayFromYear`.
+* Create a new instance of a `HolidayList`, which is a set of `HolidayFromYear`.
