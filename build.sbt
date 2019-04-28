@@ -1,6 +1,10 @@
 name := "holidays"
 
-version := "0.1.0"
+enablePlugins(GitVersioning)
+enablePlugins(GitBranchPrompt)
+
+git.baseVersion := "0.1.0"
+git.useGitDescribe := true
 
 scalaVersion := "2.12.8"
 
