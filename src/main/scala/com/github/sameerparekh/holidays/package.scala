@@ -5,7 +5,7 @@ import org.joda.time.DateTimeConstants._
 
 package object holidays {
   type HolidayFromYear = Int => LocalDate
-  type HolidayList = Set[HolidayFromYear]
+  type HolidayList     = Set[HolidayFromYear]
 
   implicit class RichLocalDate(date: LocalDate) {
     def isHoliday(implicit holidaysForYear: HolidayList): Boolean = {
@@ -112,18 +112,20 @@ package object holidays {
     * weekday.
     */
   private def getDayInRange(
-    range: Seq[Int],
-    weekDay: Int,
-    month: Int,
-    year: Int
+      range: Seq[Int],
+      weekDay: Int,
+      month: Int,
+      year: Int
   ): LocalDate = {
     require(range.length == 7, "range must have 7 days in it to find the weekday")
 
-    val matches = range.map { day =>
-      new LocalDate(year, month, day)
-    }.collect {
-      case dt if dt.getDayOfWeek == weekDay => dt
-    }
+    val matches = range
+      .map { day =>
+        new LocalDate(year, month, day)
+      }
+      .collect {
+        case dt if dt.getDayOfWeek == weekDay => dt
+      }
 
     if (matches.size != 1) {
       throw new RuntimeException(s"Unable to find a $weekDay of $month in $range")
@@ -144,9 +146,7 @@ package object holidays {
     * Given a specific month, return the last 7 dates in that month.r
     */
   private def lastWeekdayOfMonthRange(month: Int, year: Int): Seq[Int] = {
-    val lastDayOfMonth = new LocalDate(year, month, 1)
-      .dayOfMonth
-      .withMaximumValue
+    val lastDayOfMonth = new LocalDate(year, month, 1).dayOfMonth.withMaximumValue
       .getDayOfMonth
 
     (lastDayOfMonth - 6) to lastDayOfMonth
