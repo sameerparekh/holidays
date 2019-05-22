@@ -6,7 +6,11 @@ enablePlugins(GitBranchPrompt)
 git.baseVersion := "0.1.0"
 git.useGitDescribe := true
 
-scalaVersion := "2.12.8"
+val scala2_11 = "2.11.12"
+val scala2_12 = "2.12.8"
+
+scalaVersion := scala2_12
+crossScalaVersions := Seq(scala2_11, scala2_12)
 
 libraryDependencies += "com.github.nscala-time" %% "nscala-time" % "2.22.0"
 
