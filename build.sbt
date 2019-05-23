@@ -9,7 +9,6 @@ scalaVersion := scala2_12
 crossScalaVersions := Seq(scala2_11, scala2_12)
 
 libraryDependencies += "com.github.nscala-time" %% "nscala-time" % "2.22.0"
-
 libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.5"
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % "test"
 
@@ -31,3 +30,6 @@ publishTo := Some(
   else
     Opts.resolver.sonatypeStaging
 )
+
+// release signed artifacts
+releasePublishArtifactsAction := PgpKeys.publishSigned.value
