@@ -1,6 +1,7 @@
 # Holidays 
 
 [![Build Status](https://travis-ci.org/sameerparekh/holidays.svg?branch=master)](https://travis-ci.org/sameerparekh/holidays)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.sameerparekh.holidays/holidays_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.sameerparekh.holidays/holidays_2.12)
 
 A simple library to check if a date is a holiday.
 
