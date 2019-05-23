@@ -27,7 +27,7 @@ class USASuite extends FunSuite with MustMatchers {
       "2018-10-08",
       "2018-11-12",
       "2018-11-22",
-      "2018-12-25",
+      "2018-12-25"
     )
   }
 
@@ -44,7 +44,7 @@ class USASuite extends FunSuite with MustMatchers {
       "2019-10-14",
       "2019-11-11",
       "2019-11-28",
-      "2019-12-25",
+      "2019-12-25"
     )
   }
 
