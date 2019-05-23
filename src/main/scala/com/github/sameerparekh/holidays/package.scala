@@ -104,7 +104,7 @@ package object holidays {
       ColumbusDay,
       VeteransDay,
       ThanksgivingDay,
-      ChristmasDay,
+      ChristmasDay
     )
 
   /**
@@ -146,8 +146,9 @@ package object holidays {
     * Given a specific month, return the last 7 dates in that month.r
     */
   private def lastWeekdayOfMonthRange(month: Int, year: Int): Seq[Int] = {
-    val lastDayOfMonth = new LocalDate(year, month, 1).dayOfMonth.withMaximumValue
-      .getDayOfMonth
+    val lastDayOfMonth =
+      new LocalDate(year, month, 1).dayOfMonth.withMaximumValue
+        .getDayOfMonth
 
     (lastDayOfMonth - 6) to lastDayOfMonth
   }
