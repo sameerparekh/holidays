@@ -9,7 +9,7 @@ A simple library to check if a date is a holiday.
 Add the following to your sbt build (Scala 2.12.x):
 
 ```scala
-libraryDependencies += "com.github.sameerparekh" %% "holidays" % "0.1.0"
+libraryDependencies += "com.github.sameerparekh" %% "holidays" % "0.1.1"
 ```
 
 ## Usage
