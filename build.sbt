@@ -1,10 +1,6 @@
 name := "holidays"
 
-enablePlugins(GitVersioning)
 enablePlugins(GitBranchPrompt)
-
-git.baseVersion := "0.1.0"
-git.useGitDescribe := true
 
 val scala2_11 = "2.11.12"
 val scala2_12 = "2.12.8"
